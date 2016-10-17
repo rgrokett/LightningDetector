@@ -1,0 +1,11 @@
+#!/bin/sh
+echo Starting Lightning server in 
+trap '' 1
+LANG=
+export LANG
+#PERLIO=:raw
+HOME="/home/pi/LightningDetector"
+
+cd $HOME
+nohup ./read_lightning.pl &
+

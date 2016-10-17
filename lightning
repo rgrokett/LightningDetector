@@ -1,0 +1,33 @@
+#!/bin/sh
+# chkconfig: 235 98 11
+# description: Start or stop the lightning server
+#
+### BEGIN INIT INFO
+# Provides: lightning
+# Required-Start: 
+# Required-Stop: 
+# Default-Start: 2 3 5
+# Default-Stop: 0 1 6
+# Description: Start or stop the lightning server
+### END INIT INFO
+
+start=/home/pi/LightningDetector/start
+
+case "$1" in
+'start')
+	/bin/chmod o+rw /dev/ttyACM1 >/dev/null 2>&1
+	su -c $start pi >/dev/null 2>&1 </dev/null
+	RETVAL=$?
+	;;
+'stop')
+	kill `pgrep -f "read_lightning"`
+	RETVAL=$?
+	sleep 2
+	;;
+*)
+	echo "Usage: $0 { start | stop  }"
+	RETVAL=1
+	;;
+esac
+exit $RETVAL
+

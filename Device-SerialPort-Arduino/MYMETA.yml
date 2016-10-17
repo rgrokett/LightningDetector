@@ -1,0 +1,25 @@
+---
+abstract: 'A friendly way to interface Perl with your Arduino using Device::SerialPort'
+author:
+  - 'Simone (syxanash) <syxanash@cpan.org'
+build_requires:
+  ExtUtils::MakeMaker: '0'
+configure_requires:
+  ExtUtils::MakeMaker: '0'
+dynamic_config: 0
+generated_by: 'ExtUtils::MakeMaker version 6.98, CPAN::Meta::Converter version 2.142690'
+license: unknown
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: '1.4'
+name: Device-SerialPort-Arduino
+no_index:
+  directory:
+    - t
+    - inc
+requires:
+  Carp: '0'
+  Device::SerialPort: '0'
+  Test::More: '0'
+  Time::HiRes: '0'
+version: '0.07'
