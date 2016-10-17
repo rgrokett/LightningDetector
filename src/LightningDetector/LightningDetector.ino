@@ -18,7 +18,7 @@
 */
 
 #include <SPI.h>
-#include <AS3935.h>
+#include "AS3935.h"
 
 int cnt = 0;
 

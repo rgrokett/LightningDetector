@@ -18,11 +18,11 @@ http://www.designspark.com/blog/detecting-lightning-with-an-arduino
 
 # INSTALL/BUILD
 # From Raspi:
-git clone https://github.com/rgrokett/LightningDetector.git
-cd LightningDetector
-Copy src/LightningDetector.ino to PC 
 Install Apache2 if not already installed:
 sudo apt-get install apache2
+git clone https://github.com/rgrokett/LightningDetector.git
+cd LightningDetector
+Copy src/LightningDetector directory to your PC 
 
 # From Windows/Mac PC:
 Install AS3935-Arduino-Library-master.zip to Arduino IDE Libraries
