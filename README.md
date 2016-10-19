@@ -10,8 +10,9 @@ the lightning file and generates a PNG graph plotting detected strikes
 by distance and time.
 
 
-## Lightning Detector
-http://wiki.tautic.com/Category:AS3935_Lightning_Sensor_Dev_Board  
+## Lightning Detector Hardware
+http://www.playingwithfusion.com/productview.php?pdid=22
+https://www.embeddedadventures.com/as3935_lightning_sensor_module_mod-1016.html
 https://github.com/raivisr/AS3935-Arduino-Library  
 http://www.designspark.com/blog/detecting-lightning-with-an-arduino  
  
