@@ -107,6 +107,6 @@ $chart->add_dataset(@time_array);
 # Y-AXIS DISTANCE
 $chart->add_dataset(@dist_array);
 
-$chart->png('$PATH/lightning.png');
+$chart->png("$PATH/lightning.png");
 
 

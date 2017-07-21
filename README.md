@@ -21,6 +21,9 @@ http://www.designspark.com/blog/detecting-lightning-with-an-arduino
 ### From Raspi:
 Install Apache2 if not already installed:  
 sudo apt-get install apache2  
+sudo chown -R www-data:www-data /var/www
+sudo chmod -R g+w /var/www
+sudo adduser pi www-data
 git clone https://github.com/rgrokett/LightningDetector.git  
 cd LightningDetector  
 Copy src/LightningDetector directory to your PC   
@@ -32,22 +35,34 @@ Compile LightningDetector.ino and upload to your Arduino using IDE
 ### From Raspi:
 NOTE: Raspi Serial Port /dev/ttyACM0 or ttyACM1 are possible so you will need
 to find and update scripts. Default is /dev/ttyACM1  
+
+sudo apt-get install libdevice-serialport-perl
 sudo cpan install Device::SerialPort::Arduino  
+
+# If you need to manually install the serial port driver:
+cd Device-SerialPort-Arduino
+        perl Makefile.PL
+        make
+        make test
+        make install
+# Continue
 sudo apt-get install libchart-perl  
 sudo apt-get install cu  
 cu -l /dev/ttyACM1 -s 9600  
 Should get Connected.   
 To exit use tilde dot (~.)  
+cd /home/pi/LightningDetector  
 sudo cp lightning /etc/init.d/  
-sudo update-rc.d lightning enable 345  
+sudo systemctl enable lightning
+sudo reboot
  
 ##Add this to root crontab:
- # FIX USB PORT ARDUINO  
- 11 04 * * * /bin/chmod o+rw /dev/ttyACM1 >/dev/null 2>&1  
+# FIX USB PORT ARDUINO  
+11 04 * * * /bin/chmod o+rw /dev/ttyACM1 >/dev/null 2>&1  
   
 ##Add this to pi crontab:
- # GENERATE LIGHTNING PLOT  
- 0,15,30,45 * * * * /home/pi/LightningDetector/plot_lightning.pl >/dev/null 2>&1  
+# GENERATE LIGHTNING PLOT  
+0,15,30,45 * * * * /home/pi/LightningDetector/plot_lightning.pl >/dev/null 2>&1  
 
 
 ## PROGRAMS:
