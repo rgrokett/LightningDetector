@@ -9,16 +9,35 @@ by the Raspberry and logged to a file. The Raspberry periodically reads
 the lightning file and generates a PNG graph plotting detected strikes 
 by distance and time.
 
+## UPDATE
+2016-10-17 - Original version for Tautic AS3935 SPI board (no longer avail)
+	(See lib/ and src/ dirs for these files)
+
+2017-08-14 - New version to support Embedded Adventures AS3935 module
+using I2C Interface between board and Arduino.
+
 
 ## Lightning Detector Hardware
-http://www.playingwithfusion.com/productview.php?pdid=22
 https://www.embeddedadventures.com/as3935_lightning_sensor_module_mod-1016.html
+http://www.playingwithfusion.com/productview.php?pdid=22
 https://github.com/raivisr/AS3935-Arduino-Library  
 http://www.designspark.com/blog/detecting-lightning-with-an-arduino  
+Buzzer https://www.adafruit.com/product/160
  
+## WIRING
+* Circuit:
+*    Arduino Uno Arduino Mega  -->  MOD-1016 AS3935 PINS
+*         SDA         SDA      -->  SDA   (SDA is labeled on the bottom of the Arduino)
+*         SCL         SCL      -->  SCL   (SCL is labeled on the bottom of the Arduino)
+*         pin  2      pin 2    -->  IRQ
+*         GND         ''       -->  GND
+*         5V          ''       -->  VCC
+
+*         pin 9       pin 9    -->  Buzzer
+*         GND         GND      -->  Buzzer 
 
 ## INSTALL/BUILD
-### From Raspi:
+### On Raspi:
 Install Apache2 if not already installed:  
 sudo apt-get install apache2  
 sudo chown -R www-data:www-data /var/www
@@ -28,13 +47,14 @@ git clone https://github.com/rgrokett/LightningDetector.git
 cd LightningDetector  
 Copy src/LightningDetector directory to your PC   
 
-### From Windows/Mac PC:
+### On Windows/Mac PC:
 Install AS3935-Arduino-Library-master.zip to Arduino IDE Libraries  
-Compile LightningDetector.ino and upload to your Arduino using IDE  
+Edit LightningDetector2.ino 
+Compile LightningDetector2.ino and upload to your Arduino using IDE  
   
-### From Raspi:
+### On Raspi:
 NOTE: Raspi Serial Port /dev/ttyACM0 or ttyACM1 are possible so you will need
-to find and update scripts. Default is /dev/ttyACM1  
+to find and update scripts. Default is /dev/ttyACM1  9600baud 8bit
 
 sudo apt-get install libdevice-serialport-perl
 sudo cpan install Device::SerialPort::Arduino  
@@ -80,6 +100,10 @@ http://www.devshed.com/c/a/Perl/Basic-Charting-with-Perl/
 ./plot_lightning.pl  
  
 ## Serial READ Program
-nohup ./read_lightning.pl & 
+nohup ./read_lightning.pl &
+
+## Buzzer
+To get an audible alert, connect buzzer. This will beep during startup and 
+anytime a strike is detected.
 
 
