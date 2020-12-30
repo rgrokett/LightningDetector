@@ -1,6 +1,7 @@
 # LightningDetector
 ##Raspberry Pi, Arduino &amp; AS3935 Lightning Sensor
 
+
 This project connects an AS3935 Lightning sensor to an Arduino which is 
 then connected to a Raspberry Pi weather station.
 
